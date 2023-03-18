@@ -1,5 +1,5 @@
 public class StripComments {
-
+    //does not work properly yet
     public static String stripComments(String input, String[] markers) {
         String[] lines = input.split("\n");
         for (int i = 0; i < lines.length; i++) {
