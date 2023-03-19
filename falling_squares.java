@@ -4,6 +4,10 @@ import java.awt.event.*;
 import java.text.DecimalFormat;
 import java.util.*;
 
+//could be in separate files 
+//could be more detailed - then it becomes a project 
+//first pop up needs to refresh window at 0.00s
+
 public class falling_squares extends JPanel {
     static JPanel mainPanel;
     static JPanel lowerPanel;
