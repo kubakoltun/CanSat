@@ -1,4 +1,4 @@
-public class PigLatin {
+public class pig_latin {
     public static String pigIt(String str) {
         String[] words = str.split(" ");
         String[] newWords = new String[words.length];
