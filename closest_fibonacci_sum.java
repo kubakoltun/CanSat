@@ -7,6 +7,7 @@ public static int closest_fibonacci_sum (int[] arr) {
         int fib1 = 0;
         int fib2 = 1;
         int fib3 = 1;
+        
         while (fib3 < sum) {
             fib1 = fib2;
             fib2 = fib3;
@@ -15,11 +16,10 @@ public static int closest_fibonacci_sum (int[] arr) {
 
         int diff1 = fib3 - sum;
         int diff2 = sum - fib2;
-
+        
         if (diff1 < diff2) {
             return diff1;
-        } 
-        else {
+        } else {
             return diff2;
         }
     }
