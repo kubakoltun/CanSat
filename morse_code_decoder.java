@@ -1,6 +1,6 @@
 import java.util.HashMap;
 
-public class MorseCodeDecoder {
+public class morse_code_decoder {
   public static String decode(String morseCode) {
     HashMap<String, String> morseCodeTable = new HashMap<String, String>() {{
       put(".-", "A");
