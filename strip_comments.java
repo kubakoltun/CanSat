@@ -1,4 +1,4 @@
-public class StripComments {
+public class strip_comments {
     public static String stripComments(String input, String[] markers) {
         String[] lines = input.split("\\n");
         String line = "";
