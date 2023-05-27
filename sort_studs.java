@@ -1,6 +1,5 @@
 import java.util.Arrays;
 public class sort_studs {
-
     public static class Person {
         protected String firstname;
         protected String lastname;
