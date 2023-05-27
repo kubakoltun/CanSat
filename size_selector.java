@@ -4,7 +4,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class size_selector {
-
     static class MyFrame extends JFrame implements ActionListener {
         JButton addPersonButton;
         JButton exitButton;
