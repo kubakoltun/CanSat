@@ -31,8 +31,7 @@ public static String max_matrix_area (String[] strArr) {
       if (stack.isEmpty() || currHeight >= heights[stack.peek()]) {
         stack.push(idx);
         idx++;
-      }
-      else {
+      } else {
         int topIdx = stack.pop();
         int width = stack.isEmpty() ? idx : idx - stack.peek() - 1;
         maxArea = Math.max(maxArea, heights[topIdx] * width); 
