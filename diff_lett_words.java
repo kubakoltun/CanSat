@@ -11,7 +11,6 @@ public class diff_lett_words {
         String book = "schultz_sklepy_cynamonowe_UTF8.txt";
         //String book = "melville_moby_dick.txt";
         //String book = "tekst_test.txt";
-
         int minLen = 5;
         try (Stream<String> lines =
                      Files.lines(Paths.get(book)))
