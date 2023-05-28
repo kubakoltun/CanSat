@@ -2,7 +2,6 @@ import java.util.Iterator;
 import java.util.Random;
 
 public class roll_dice {
-
 public static class Roll implements Iterable<Integer> {
     private int prv, now, clo;
 
