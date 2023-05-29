@@ -6,12 +6,11 @@ public class pig_latin {
 
         for (int j = 0; j < words.length; j++) {
           newWords[j] = "";
+            
             for (int i = 0; i < words[j].length(); i++) {
-              
                 if (i == 0) {
                     holdString = words[j].charAt(i);
-                }
-                else {
+                } else {
                     newWords[j] += words[j].charAt(i);
                 }
 
