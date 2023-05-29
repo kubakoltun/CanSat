@@ -13,6 +13,7 @@ import java.io.*;
 
        for (int j = 0; j < word.length(); j++) {
          char cr = Character.toLowerCase(word.charAt(j));
+         
          if (cr >= 'a' && cr <= 'z') {
            occurs[cr - 'a']++;
            if (occurs[cr - 'a'] == 2) {
