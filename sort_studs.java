@@ -10,6 +10,7 @@ public class sort_studs {
             this.lastname = lastname;
             this.country = country;
         }
+        
         public String toString() {
             return firstname + " " + lastname + " " + "(" + country + ")";
         }
@@ -60,6 +61,7 @@ public class sort_studs {
         };
         Arrays.sort(studs);
         System.out.println("Students: by lastname, firstname, country");
+        
         for (Student s : studs)
             System.out.println(s);
         Citizen[] cits = {
@@ -73,6 +75,7 @@ public class sort_studs {
         };
         Arrays.sort(cits);
         System.out.println("Citizens: by country, lastname, firstname");
+        
         for (Citizen c : cits)
             System.out.println(c);
     }
