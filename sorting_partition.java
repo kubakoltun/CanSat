@@ -13,14 +13,14 @@ public class sorting_partition {
             else if (data[i] > last) {        
                 sorted[ll] = data[i];      
                 ll--;     
-            }    
-            else {       
+            } else {       
                 sorted[ni] = data[i]; 
             }    
         }    
         
         return sorted;  
     }  
+    
     public static void main(String[] args) {  
         int[] sortedOut = new int[] {1, 8, 7, 2, 4, 6, 10, 5};     
         int[] sourtedoutput = sort(sortedOut);
