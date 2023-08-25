@@ -2,6 +2,7 @@ public class strip_comments {
     public static String stripComments(String input, String[] markers) {
         String[] lines = input.split("\\n");
         String line = "";
+        
         for (int i = 0; i < lines.length; i++) {
             line = lines[i];
             for (String marker : markers) {
