@@ -10,7 +10,6 @@ public static class Roll implements Iterable<Integer> {
         Random rnm = new Random();
         return new Iterator<Integer>() {
 
-
             @Override
             public boolean hasNext() {
                 return prv + now + clo != 11;
