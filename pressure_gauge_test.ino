@@ -2,7 +2,8 @@
 #include <Adafruit_Sensor.h>
 #include <Adafruit_BMP280.h>
 
-Adafruit_BMP280 bmp; // Inicjalizacja obiektu BMP280
+// Inicjalizacja obiektu BMP280
+Adafruit_BMP280 bmp; 
 
 void setup() {
   Serial.begin(9600);
@@ -14,7 +15,8 @@ void setup() {
 
 void loop() {
   float temperature = bmp.readTemperature();
-  float pressure = bmp.readPressure() / 100.0F; // Zamiana na hPa
+  // Zamiana na hPa
+  float pressure = bmp.readPressure() / 100.0F; 
 
   Serial.print(F("Temperatura: "));
   Serial.print(temperature);
@@ -24,5 +26,5 @@ void loop() {
   Serial.print(pressure);
   Serial.println(" hPa");
 
-  delay(1000); // Odczyt co 1 sekundę
+  delay(1000);
 }
