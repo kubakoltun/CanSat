@@ -9,11 +9,13 @@ DallasTemperature sensors(&oneWire);
 
 void setup() {
   Serial.begin(9600);
-  sensors.begin();  // Rozpoczęcie komunikacji z czujnikiem DS18B20
+  // Rozpoczęcie komunikacji z czujnikiem DS18B20
+  sensors.begin();  
 }
 
 void loop() {
-  sensors.requestTemperatures(); // Wysłanie żądania pomiaru temperatury
+  // Wysłanie żądania pomiaru temperatury
+  sensors.requestTemperatures(); 
 
   // Odczyt temperatury z czujnika DS18B20
   float temperatureCelsius = sensors.getTempCByIndex(0);
@@ -29,5 +31,5 @@ void loop() {
     Serial.println("Błąd odczytu temperatury.");
   }
 
-  delay(1000); // Poczekaj 1 sekundę przed kolejnym odczytem
+  delay(1000);
 }
