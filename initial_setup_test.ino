@@ -62,7 +62,8 @@ void setup() {
 void loop() {
   // Odczyt temperatury z czujnika BMP280
   float temperatureBMP = bmp.readTemperature();
-  float pressureBMP = bmp.readPressure() / 100.0F; // Zamiana na hPa
+  // Zamiana na hPa
+  float pressureBMP = bmp.readPressure() / 100.0F;
 
   Serial.print(F("Temperatura BMP280: "));
   Serial.print(temperatureBMP);
