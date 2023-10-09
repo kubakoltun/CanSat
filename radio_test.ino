@@ -53,6 +53,5 @@ void loop() {
     }
     delay(1000);
   }
-  // Odczekaj przed wysłaniem kolejnej wiadomości
   delay(5000); 
 }
