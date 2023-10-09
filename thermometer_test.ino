@@ -30,6 +30,5 @@ void loop() {
     // Jeśli nie udało się odczytać temperatury, wyświetl komunikat o błędzie
     Serial.println("Błąd odczytu temperatury.");
   }
-
   delay(1000);
 }
