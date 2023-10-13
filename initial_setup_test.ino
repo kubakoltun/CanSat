@@ -5,6 +5,7 @@
 #include <Seeed_LoRaWAN.h>
 #include <OneWire.h>
 #include <DallasTemperature.h>
+#include "config.h"
 
 // Inicjalizacja obiektu BMP280
 Adafruit_BMP280 bmp;
@@ -19,14 +20,14 @@ DallasTemperature sensors(&oneWire);
 #define LORA_TX 3
 #define LORA_BAUD 9600
 
-char appEui[] = "YourAppEui"; 
-char appKey[] = "YourAppKey"; 
+char appEui[]; 
+char appKey[]; 
 
 void setup() {
   Serial.begin(9600);
   while (!Serial);
 
-  Serial.println("Grove - LoRa Radio 868MHz Example");
+  Serial.println("Grove - LoRa Radio 868MHz");
 
   // Inicjalizacja komunikacji szeregowej z modułem LoRa
   SoftwareSerial loraSerial(LORA_RX, LORA_TX);

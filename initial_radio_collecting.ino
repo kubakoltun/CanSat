@@ -1,5 +1,6 @@
 #include <SPI.h>
 #include <LoRaWan-Arduino.h>
+#include "config.h"
 
 #define SENDER
 // 868MHz
