@@ -14,7 +14,7 @@ void setup() {
 
   #ifdef SENDER
     // Wysyłanie danych
-    LoRaWAN.send("Hello, World!", 13);
+    LoRaWAN.send("Wyslanie komunikatu ze stacji odbierajacej!", 13);
   #else
     // Odbieranie danych
     LoRaWAN.onReceive([](const uint8_t *data, size_t size) {
