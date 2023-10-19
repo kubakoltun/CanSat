@@ -1,0 +1,4 @@
+UART_TX - PB6
+UART_RX - PB7
+5V - VCC(1)
+GND - GND(2)
