@@ -1,57 +1,37 @@
-#include <SoftwareSerial.h>
-#include <Seeed_LoRaWAN.h>
+#include <Arduino.h>
+#include <LoRaWan-STM32.h> 
 
-#define LORA_RX 2
-#define LORA_TX 3
-#define LORA_BAUD 9600
-
-char appEui[] = "YourAppEui"; 
-char appKey[] = "YourAppKey"; 
+LoRaWanClass lora;  
 
 void setup() {
-  Serial.begin(9600);
+  Serial.begin(115200);
   while (!Serial);
 
-  Serial.println("Grove - LoRa Radio 868MHz Example");
-
-  // Inicjalizacja komunikacji szeregowej z modułem LoRa
-  SoftwareSerial loraSerial(LORA_RX, LORA_TX);
-  loraSerial.begin(LORA_BAUD);
-
-  // Inicjalizacja modułu LoRa
-  while (!LoRaBee.init(loraSerial)) {
-    Serial.println("Inicjalizacja modułu LoRa nie powiodła się!");
-    delay(10000);
-  }
-  
-  // Konfiguracja kluczy AppEUI i AppKey
-  LoRaBee.setAppEUI(appEui);
-  LoRaBee.setAppKey(appKey);
-
-  // Sprawdzenie połączenia z siecią LoRa
-  while (!LoRaBee.joinABP()) {
-    Serial.println("Nie udało się dołączyć do sieci LoRa!");
-    delay(10000);
+  if (lora.begin(EU868)) { ć
+    Serial.println("LoRa module initialized successfully.");
+  } else {
+    Serial.println("LoRa module initialization failed. Check your connections.");
+    while (1);
   }
 
-  Serial.println("Połączono z siecią LoRa!");
+  if (lora.joinOTAA()) {
+    Serial.println("Joined LoRaWAN network.");
+  } else {
+    Serial.println("Joining LoRaWAN network failed.");
+    while (1);
+  }
 }
 
 void loop() {
-  // Przykład wysyłania wiadomości
-  String message = "Pierwszy komunikat radiowy!";
-    // Wysłanie wiadomości z priorytetem 1
-    LoRaBee.send(1, message); 
+  String data = "Komunikat radiowy z urządzenia Arduino !";
+  lora.sendData(data, strlen(data), false);
 
-  // Oczekiwanie na potwierdzenie
-  int waitCount = 0;
-  while (!LoRaBee.waitSend()) {
-    waitCount++;
-    if (waitCount > 30) {
-      Serial.println("Przekroczono limit czasu czekania na potwierdzenie.");
-      break;
-    }
-    delay(1000);
+  lora.waitUntil(TX_COMPLETE); 
+
+  if (lora.packetReceived()) {
+    String response = lora.readData();
+    Serial.println("Received: " + response);
   }
-  delay(5000); 
+
+  delay(5000);  
 }
