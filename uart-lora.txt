@@ -1,4 +1,4 @@
-UART_TX - PB6 [yellow]
-UART_RX - PB7 [red]
-3V - VCC(1) [brown]
-GND - GND(2) [orange]
+UART_TX - PB6 [TX - yellow]
+UART_RX - PB7 [RX - red]
+CVV - VCC(1)  [3V - brown]
+GND - GND(2)  [GD - orange]
