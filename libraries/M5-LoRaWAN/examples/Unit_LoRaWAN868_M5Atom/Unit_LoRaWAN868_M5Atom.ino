@@ -3,10 +3,10 @@
 * Copyright (c) 2022 by M5Stack
 *                  Equipped with Atom-Lite/Matrix sample source code
 *                          配套  Atom-Lite/Matrix 示例源代码
-* Visit for more information: https://docs.m5stack.com/en/unit/lorawan470
-* 获取更多资料请访问: https://docs.m5stack.com/zh_CN/unit/lorawan470
+* Visit for more information: https://docs.m5stack.com/en/unit/lorawan868
+* 获取更多资料请访问: https://docs.m5stack.com/zh_CN/unit/lorawan868
 *
-* Product: LoRaWAN470.
+* Product: LoRaWAN868.
 * Date: 2022/8/19
 *******************************************************************************
   Please connect to Port C,请连接端口C
@@ -55,31 +55,21 @@ void setup() {
     LoRaWAN.setClass("2");
     LoRaWAN.writeCMD("AT+CWORKMODE=2\r\n");
 
-    // LoRaWAN470
-    LoRaWAN.setRxWindow("505300000");
+    // LoRaWAN868
+    // TX Freq
+    // 868.1 - SF7BW125 to SF12BW125
+    // 868.3 - SF7BW125 to SF12BW125 and SF7BW250
+    // 868.5 - SF7BW125 to SF12BW125
+    // 867.1 - SF7BW125 to SF12BW125
+    // 867.3 - SF7BW125 to SF12BW125
+    // 867.5 - SF7BW125 to SF12BW125
+    // 867.7 - SF7BW125 to SF12BW125
+    // 867.9 - SF7BW125 to SF12BW125
+    // 868.8 - FSK
+    LoRaWAN.setFreqMask("0001");
 
-    // LoRaWAN470 TX Freq
-    // 486.3
-    // 486.5
-    // 486.7
-    // 486.9
-    // 487.1
-    // 487.3
-    // 487.5
-    // 487.7
-    // MARK 0000 0100 0000 0000 | 0x0400
-    LoRaWAN.setFreqMask("0400");
-
-    // RX Freq
-    // 506.7 (RX1)
-    // 506.9 (RX1)
-    // 507.1 (RX1)
-    // 507.3 (RX1)
-    // 507.5 (RX1)
-    // 507.7 (RX1)
-    // 507.9 (RX1)
-    // 508.1 (RX1)
-    // 505.3 (RX2)| 505300000
+    // 869.525 - SF9BW125 (RX2)              | 869525000
+    LoRaWAN.setRxWindow("869525000");
     LoRaWAN.startJoin();
 }
 
