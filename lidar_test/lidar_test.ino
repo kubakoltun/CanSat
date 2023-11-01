@@ -4,13 +4,16 @@
 #define POINT_PER_PACK 12
 #define HEADER 0x54
 
+int dg = 0;
+
 // RX, TX pins on Arduino
-SoftwareSerial lidarSerial(0, 3); 
+SoftwareSerial lidarSerial(0, 3);
 
 typedef struct __attribute__((packed)) {
   uint16_t distance;
   uint8_t intensity;
-} LidarPointStructDef;
+} 
+LidarPointStructDef;
 
 typedef struct __attribute__((packed)) {
   uint8_t header;
@@ -21,7 +24,8 @@ typedef struct __attribute__((packed)) {
   uint16_t end_angle;
   uint16_t timestamp;
   uint8_t crc8;
-} LiDARFrameTypeDef;
+} 
+LiDARFrameTypeDef;
 
 static const uint8_t CrcTable[256] = {
   0x00, 0x4d, 0x9a, 0xd7, 0x79, 0x34, 0xe3,
@@ -67,7 +71,7 @@ void setup() {
 }
 
 void loop() {
-  if (lidarSerial.available() >= sizeof(LiDARFrameTypeDef)) {
+  if (lidarSerial.available() >= sizeof(LiDARFrameTypeDef) && dg < 360) {
     LiDARFrameTypeDef lidarData;
     lidarSerial.readBytes((char *)&lidarData, sizeof(LiDARFrameTypeDef));
 
@@ -76,24 +80,30 @@ void loop() {
 
     if (crc == lidarData.crc8) {
       // Data is valid
-      Serial.print("Start Angle: ");
-      Serial.println(lidarData.start_angle * 0.01);
+      // Serial.print("Start Angle: ");
+      // Serial.println(lidarData.start_angle * 0.01);
 
       for (int i = 0; i < POINT_PER_PACK; i++) {
-        float angleStep = (lidarData.end_angle - lidarData.start_angle) / (POINT_PER_PACK - 1);
-        float pointAngle = lidarData.start_angle + angleStep * i;
+        // float angleStep = (lidarData.end_angle - lidarData.start_angle) / (POINT_PER_PACK - 1);
+        // float pointAngle = lidarData.start_angle + angleStep * i;
 
-        Serial.print("Point ");
-        Serial.print(i + 1);
-        Serial.print(": Distance=");
+        // Serial.print("Point ");
+        // Serial.print(i + 1);
+        // Serial.print(": Distance=");
+        // Serial.print(lidarData.point[i].distance);
+        // Serial.print(" Intensity=");
+        // Serial.print(lidarData.point[i].intensity);
+        // Serial.print(" Angle=");
+        // Serial.println(pointAngle * 0.01);
+
+        Serial.print(dg);
+        Serial.print(",");
         Serial.print(lidarData.point[i].distance);
-        Serial.print(" Intensity=");
-        Serial.print(lidarData.point[i].intensity);
-        Serial.print(" Angle=");
-        Serial.println(pointAngle * 0.01);
+        Serial.println();
+        dg++;
       }
 
-      Serial.println(); 
+      // Serial.println(); 
     } else {
       // Serial.println("Invalid CRC. Data discarded.");
     }
