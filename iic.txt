@@ -1,0 +1,10 @@
+vcc - 3.3v (arduino)
+gnd - gnd (arduino)
+scl - scl (arduino)
+sda - sda (arduino)
+
+
+#define COMSerial Serial1
+#define ShowSerial SerialUSB
+
+RH_RF95<HardwareSerial> rf95(COMSerial);

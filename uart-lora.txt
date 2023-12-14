@@ -2,3 +2,8 @@ UART_TX - PB6 [TX - yellow]
 UART_RX - PB7 [RX - red]
 CVV - VCC(1)  [3V - brown]
 GND - GND(2)  [GD - orange]
+
+TX - RX (na moim arduino shield jest błąd w wydruku tx zamiast rx)
+RX - TX (rx ma pin 0, natomiast tx ma pin 1)
+GND - MINUS (-)
+VCC - PLUS (+)
