@@ -64,24 +64,20 @@ void setup() {
         std::terminate();
     }
 
-    // Defaults after init are 434.0MHz, 13dBm, Bw = 125 kHz, Cr = 4/5, Sf = 128chips/symbol, CRC on
     rf95.setFrequency(868.0);
 }
 
 void loop() {
     SerialUSB().println("Sending to rf95_server");
-    // Send a message to rf95_server
-    uint8_t data[] = "Hello World!";
+    uint8_t data[] = "Hello Radio 868!";
     rf95.send(data, sizeof(data));
 
     rf95.waitPacketSent();
 
-    // Now wait for a reply
     uint8_t buf[RH_RF95_MAX_MESSAGE_LEN];
     uint8_t len = sizeof(buf);
 
     if (rf95.waitAvailableTimeout(3000)) {
-        // Should be a reply message for us now
         if (rf95.recv(buf, &len)) {
             SerialUSB().print("got reply: ");
             SerialUSB().println(reinterpret_cast<char*>(buf));
@@ -100,5 +96,6 @@ int main() {
     while (true) {
         loop();
     }
+
     return 0;
 }
