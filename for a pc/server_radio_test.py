@@ -16,6 +16,7 @@ class LoRa:
     def receive(self):
         # Tutaj dodaj kod do odbierania danych z modułu LoRa
         # Prawdopodobnie będzie to odczyt z self.ser.readline() lub podobnej metody
+        pass  # Placeholder, aby uniknąć błędu braku ciała funkcji
 
     def close(self):
         self.ser.close()
