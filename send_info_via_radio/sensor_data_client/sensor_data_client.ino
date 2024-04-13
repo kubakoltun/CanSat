@@ -24,7 +24,7 @@ int led = 13;
 
 void setup() {
   ShowSerial.begin(115200);
-  ShowSerial.println("RF95 server test.");
+  ShowSerial.println("RF95 client.");
 
   pinMode(led, OUTPUT);
 
