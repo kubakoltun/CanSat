@@ -6,7 +6,7 @@
 RH_RF95<HardwareSerial> rf95(COMSerial);
 
 void setup() {
-    ShowSerial.begin(115200);
+    ShowSerial.begin(9600);
     // COMSerial.begin(115200);
     ShowSerial.println("RF95 client test.");
 
@@ -20,7 +20,7 @@ void setup() {
 
 void loop() {
     ShowSerial.println("Sending to rf95_server");
-    uint8_t data[] = "Hello World!";
+    uint8_t data[] = "Here are my data: data - signed Client";
     rf95.send(data, sizeof(data));
     rf95.waitPacketSent();
 

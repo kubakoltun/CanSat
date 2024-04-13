@@ -9,7 +9,7 @@ RH_RF95<SoftwareSerial> rf95(COMSerial);
 int led = 13;
 
 void setup() {
-    ShowSerial.begin(115200);
+    ShowSerial.begin(9600);
     // COMSerial.begin(115200);
     ShowSerial.println("RF95 server test.");
 
@@ -29,18 +29,21 @@ void loop() {
         uint8_t len = sizeof(buf);
         if (rf95.recv(buf, &len)) {
             digitalWrite(led, HIGH);
+            ShowSerial.println("Sending to rf95_server");
 
-            ShowSerial.print("got request: ");
-            ShowSerial.println((char*)buf);
+            ShowSerial.println("got request: ");
+            ShowSerial.print((char*)buf);
+            ShowSerial.println();
 
-            uint8_t data[] = "And hello back to you";
+            uint8_t data[] = "Nice data you got there";
             rf95.send(data, sizeof(data));
             rf95.waitPacketSent();
             ShowSerial.println("Sent a reply");
 
-            digitalWrite(led, LOW);
         } else {
             ShowSerial.println("recv failed");
         }
     }
+    delay(3000);
+    digitalWrite(led, LOW);
 }
